@@ -1,0 +1,223 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introduction &mdash; maabara 1.0.0 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="maabara 1.0.0 documentation" href="index.html"/>
+        <link rel="next" title="Installation" href="installation.html"/>
+        <link rel="prev" title="Error Propagation made easy - maabara" href="index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> maabara</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#a-short-example">A short example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#ubuntu">Ubuntu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#other-operation-systems">Other operation systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#test-your-installation">Test your installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#basic-setup">Basic setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#basic-error-propagation">Basic error propagation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#abbreviations">Abbreviations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#batch-data">Batch data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#generate-latex-tables">Generate Latex Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#handling-experimental-data">Handling experimental data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Reference Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="uncertainty.html">Uncertainty Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="latex.html">Latex Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data.html">Data Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development.html#license">License</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">maabara</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Introduction</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/introduction.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>In scientific computations it is a quite common pastime to <a class="reference external" href="http://en.wikipedia.org/wiki/Propagation_of_uncertainty">propagate uncertainty</a>.</p>
+<p>The Python Package <a class="reference external" href="http://pythonhosted.org/uncertainties/">uncertainties</a> does this sport really catchy. But its propagation yields a numeric result only. It&#8217;s great if you only need the final value, but what if you have to document the underlying computation?</p>
+<div class="math">
+\[\sigma_y=\sqrt{ \sum_{i=1}^m \left(\frac{\partial y}{\partial x_i}\cdot u_i\right)^2}\]</div>
+<p>Maabara extends <em>uncertainties</em> package and allows you to calculate and document error propagation in one step. Type your equation once, get the result and its uncertainty including calculation specification - ready in Latex markup.
+Moreover the data module provides functions for estimation of uncertainty, fitting with error bars, comparison with literature values and more.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">At its current state of development Maabara does not support correlations.</p>
+</div>
+<div class="section" id="a-short-example">
+<h2>A short example<a class="headerlink" href="#a-short-example" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s do something prominent to see how it works: Mass–energy equivalence</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">maabara</span> <span class="kn">as</span> <span class="nn">ma</span>   <span class="c"># import maabara package</span>
+
+<span class="n">einstein</span> <span class="o">=</span> <span class="n">ma</span><span class="o">.</span><span class="n">uncertainty</span><span class="o">.</span><span class="n">Sheet</span><span class="p">()</span>           <span class="c"># retrieve computation object</span>
+<span class="n">einstein</span><span class="o">.</span><span class="n">set_equation</span><span class="p">(</span><span class="s">&#39;m*c**2&#39;</span><span class="p">,</span> <span class="s">&#39;E&#39;</span><span class="p">)</span>        <span class="c"># set the equation and name</span>
+<span class="n">einstein</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="s">&#39;m&#39;</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>            <span class="c"># set mass value and its uncertainty</span>
+<span class="n">einstein</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="mf">28E3</span><span class="p">,</span> <span class="n">tex</span><span class="o">=</span><span class="s">&#39;{c_0}&#39;</span><span class="p">)</span>  <span class="c"># set light speed and its Latex symbol</span>
+
+<span class="n">einstein</span><span class="o">.</span><span class="n">print_result</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>In default setting you&#8217;ll get result, equation and propagation of uncertainty like</p>
+<div class="math">
+\[E=\left(7.8 \pm 0.8\right) \times 10^{8}\]\[E={c_0}^{2} \cdot m\]\[\sigma_{E}={c_0}^{2} \cdot \sigma_{m}\]</div>
+<p>Of course everything will be copyable Latex markup. Well, it is not too impressing. But add some trigonometric functions, calculate a hundreds of values or generate Latex tables from result and it will get more exciting.
+Continue reading the <a class="reference external" href="user_guide.html">User Guide</a> for such pleasures.</p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="installation.html" class="btn btn-neutral float-right" title="Installation">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Error Propagation made easy - maabara"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    </p>
+  </div>
+
+  <!--<a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>-->
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

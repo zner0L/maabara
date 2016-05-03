@@ -1,0 +1,365 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Latex Module &mdash; maabara 1.0.0 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="maabara 1.0.0 documentation" href="index.html"/>
+        <link rel="up" title="Reference Guide" href="api.html"/>
+        <link rel="next" title="Data Module" href="data.html"/>
+        <link rel="prev" title="Uncertainty Module" href="uncertainty.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> maabara</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#a-short-example">A short example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#ubuntu">Ubuntu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#other-operation-systems">Other operation systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#test-your-installation">Test your installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#basic-setup">Basic setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#basic-error-propagation">Basic error propagation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#abbreviations">Abbreviations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#batch-data">Batch data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#generate-latex-tables">Generate Latex Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#handling-experimental-data">Handling experimental data</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">Reference Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="uncertainty.html">Uncertainty Module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Latex Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data.html">Data Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development.html#license">License</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">maabara</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="api.html">Reference Guide</a> &raquo;</li>
+      
+    <li>Latex Module</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/latex.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="latex-module">
+<h1>Latex Module<a class="headerlink" href="#latex-module" title="Permalink to this headline">¶</a></h1>
+<p>You might read the <a class="reference external" href="user_guide.html#generate-latex-tables">user guide</a> introduction of this module.</p>
+<span class="target" id="module-maabara.latex"></span><dl class="class">
+<dt id="maabara.latex.Table">
+<em class="property">class </em><tt class="descclassname">maabara.latex.</tt><tt class="descname">Table</tt><a class="reference internal" href="_modules/maabara/latex.html#Table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#maabara.latex.Table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generating Latex Tables</p>
+<dl class="method">
+<dt id="maabara.latex.Table.add_column">
+<tt class="descname">add_column</tt><big>(</big><em>data</em>, <em>function=False</em>, <em>title=''</em><big>)</big><a class="reference internal" href="_modules/maabara/latex.html#Table.add_column"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#maabara.latex.Table.add_column" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a column to table</p>
+<dl class="docutils">
+<dt>data <span class="classifier-delimiter">:</span> <span class="classifier">array_like</span></dt>
+<dd>Data set</dd>
+<dt>function <span class="classifier-delimiter">:</span> <span class="classifier">mixed</span></dt>
+<dd><p class="first">If False <tt class="docutils literal"><span class="pre">data</span></tt> will be added unchanged.</p>
+<p>If String it sets instructions how to render <tt class="docutils literal"><span class="pre">data</span></tt> into each cell, 
+e.g. <tt class="docutils literal"><span class="pre">example($0,1)</span></tt>. <tt class="docutils literal"><span class="pre">$x</span></tt> will link to x. column of dataset.</p>
+<p>Available functions:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">num(value,</span> <span class="pre">deviation,</span> <span class="pre">format)</span></tt> <span class="classifier-delimiter">:</span> <span class="classifier">Number formating</span></dt>
+<dd><tt class="docutils literal"><span class="pre">num($0)</span></tt> &#8211; Format first column in data as number
+<tt class="docutils literal"><span class="pre">num($0,0.1)</span></tt> &#8211; Format numbers with constant uncertainty 0.1
+<tt class="docutils literal"><span class="pre">num($0,$1)</span></tt> &#8211; Dynamic uncertainty from second column of data
+<tt class="docutils literal"><span class="pre">num($0,$1,{:L})</span></tt> &#8211; Optional format for ufloat printing</dd>
+<dt><tt class="docutils literal"><span class="pre">uc(ufloat,</span> <span class="pre">format)</span></tt> <span class="classifier-delimiter">:</span> <span class="classifier">Number formating alias</span></dt>
+<dd>Like <tt class="docutils literal"><span class="pre">num</span></tt> function but with ufloat argument</dd>
+<dt><tt class="docutils literal"><span class="pre">lit(reference,</span> <span class="pre">value,</span> <span class="pre">deviation)</span></tt> <span class="classifier-delimiter">:</span> <span class="classifier">Compare to literature value, see <a class="reference internal" href="data.html#maabara.data.literature_value" title="maabara.data.literature_value"><tt class="xref py py-func docutils literal"><span class="pre">literature_value()</span></tt></a></span></dt>
+<dd><tt class="docutils literal"><span class="pre">lit(3.141,</span> <span class="pre">$0)</span></tt> &#8211; Compare with literature value of pi
+<tt class="docutils literal"><span class="pre">lit(3.141,</span> <span class="pre">$0,$1)</span></tt> &#8211; Compare including deviation</dd>
+<dt><tt class="docutils literal"><span class="pre">rnd(value,</span> <span class="pre">digits)</span></tt> <span class="classifier-delimiter">:</span> <span class="classifier">rounding</span></dt>
+<dd><tt class="docutils literal"><span class="pre">rnd($0,3)</span></tt> &#8211; round numbers in 3 digits</dd>
+</dl>
+<p class="last">Note that <tt class="docutils literal"><span class="pre">num</span></tt> will be default if no function name was specified: <tt class="docutils literal"><span class="pre">$0,$1</span></tt> will be interpreted as <tt class="docutils literal"><span class="pre">num($0,$1)</span></tt></p>
+</dd>
+<dt>title <span class="classifier-delimiter">:</span> <span class="classifier">string, optional</span></dt>
+<dd>Sets a column caption</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="maabara.latex.Table.c">
+<tt class="descname">c</tt><big>(</big><em>data</em>, <em>function=False</em>, <em>title=''</em><big>)</big><a class="reference internal" href="_modules/maabara/latex.html#Table.c"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#maabara.latex.Table.c" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias of <a class="reference internal" href="#maabara.latex.Table.add_column" title="maabara.latex.Table.add_column"><tt class="xref py py-func docutils literal"><span class="pre">add_column()</span></tt></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="maabara.latex.Table.dimensions">
+<tt class="descname">dimensions</tt><big>(</big><em>array_return=False</em><big>)</big><a class="reference internal" href="_modules/maabara/latex.html#Table.dimensions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#maabara.latex.Table.dimensions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a the dimensions of the current table data</p>
+<dl class="docutils">
+<dt>array_return <span class="classifier-delimiter">:</span> <span class="classifier">boolean, optional</span></dt>
+<dd>If True method will return and empty row and column array</dd>
+</dl>
+<dl class="docutils">
+<dt>out <span class="classifier-delimiter">:</span> <span class="classifier">mixed</span></dt>
+<dd>By default method will return row and col count, if array_return
+two empty arrays with the corresponding dimensions are returned.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="maabara.latex.Table.environment">
+<tt class="descname">environment</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/maabara/latex.html#Table.environment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#maabara.latex.Table.environment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get Latex table environment markup</p>
+<dl class="docutils">
+<dt>out <span class="classifier-delimiter">:</span> <span class="classifier">string header, string footer</span></dt>
+<dd>Latex table environment header and footer</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="maabara.latex.Table.export">
+<tt class="descname">export</tt><big>(</big><em>file</em><big>)</big><a class="reference internal" href="_modules/maabara/latex.html#Table.export"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#maabara.latex.Table.export" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves Latex table markup to file</p>
+<dl class="docutils">
+<dt>file <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
+<dd>Filename</dd>
+</dl>
+<dl class="docutils">
+<dt>out <span class="classifier-delimiter">:</span> <span class="classifier">mixed</span></dt>
+<dd>Latex <tt class="docutils literal"><span class="pre">\input</span></tt> command or <tt class="docutils literal"><span class="pre">False</span></tt> on failure</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="maabara.latex.Table.get_data">
+<tt class="descname">get_data</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/maabara/latex.html#Table.get_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#maabara.latex.Table.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get data</p>
+<dl class="docutils">
+<dt>out <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd>Data</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="maabara.latex.Table.latex">
+<tt class="descname">latex</tt><big>(</big><em>data=</em><span class="optional">[</span><span class="optional">]</span><big>)</big><a class="reference internal" href="_modules/maabara/latex.html#Table.latex"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#maabara.latex.Table.latex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get Latex table markup</p>
+<dl class="docutils">
+<dt>data <span class="classifier-delimiter">:</span> <span class="classifier">array_like, optional</span></dt>
+<dd>See <tt class="xref py py-func docutils literal"><span class="pre">set_data()</span></tt></dd>
+</dl>
+<dl class="docutils">
+<dt>out <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
+<dd>Latex table markup</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="maabara.latex.Table.no_environment">
+<tt class="descname">no_environment</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/maabara/latex.html#Table.no_environment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#maabara.latex.Table.no_environment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disables Table environment. Export will result in table body only.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="maabara.latex.Table.no_headline">
+<tt class="descname">no_headline</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/maabara/latex.html#Table.no_headline"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#maabara.latex.Table.no_headline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disables head row. Export won&#8217;t add headers to table columns.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="maabara.latex.Table.reset">
+<tt class="descname">reset</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/maabara/latex.html#Table.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#maabara.latex.Table.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear all settings</p>
+<dl class="docutils">
+<dt>out <span class="classifier-delimiter">:</span> <span class="classifier">boolean</span></dt>
+<dd>True on success.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="maabara.latex.Table.set_caption">
+<tt class="descname">set_caption</tt><big>(</big><em>caption</em><big>)</big><a class="reference internal" href="_modules/maabara/latex.html#Table.set_caption"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#maabara.latex.Table.set_caption" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a Latex caption</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="maabara.latex.Table.set_data">
+<tt class="descname">set_data</tt><big>(</big><em>data</em><big>)</big><a class="reference internal" href="_modules/maabara/latex.html#Table.set_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#maabara.latex.Table.set_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set data</p>
+<p>data : array_like</p>
+<dl class="docutils">
+<dt>out <span class="classifier-delimiter">:</span> <span class="classifier">boolean</span></dt>
+<dd>True on success</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="maabara.latex.Table.set_label">
+<tt class="descname">set_label</tt><big>(</big><em>label</em><big>)</big><a class="reference internal" href="_modules/maabara/latex.html#Table.set_label"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#maabara.latex.Table.set_label" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a Latex label</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="maabara.latex.Table.set_placement">
+<tt class="descname">set_placement</tt><big>(</big><em>placement='[!htb]'</em><big>)</big><a class="reference internal" href="_modules/maabara/latex.html#Table.set_placement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#maabara.latex.Table.set_placement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a placement</p>
+<dl class="docutils">
+<dt>placement <span class="classifier-delimiter">:</span> <span class="classifier">string, default <tt class="docutils literal"><span class="pre">[!htb]</span></tt></span></dt>
+<dd>Latex placement to align table.</dd>
+</dl>
+<dl class="docutils">
+<dt>out <span class="classifier-delimiter">:</span> <span class="classifier">boolean</span></dt>
+<dd>True on success.</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="data.html" class="btn btn-neutral float-right" title="Data Module">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="uncertainty.html" class="btn btn-neutral" title="Uncertainty Module"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    </p>
+  </div>
+
+  <!--<a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>-->
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
