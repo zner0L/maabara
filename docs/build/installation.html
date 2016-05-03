@@ -1,0 +1,226 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Installation &mdash; maabara 1.0.0 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="maabara 1.0.0 documentation" href="index.html"/>
+        <link rel="next" title="User Guide" href="user_guide.html"/>
+        <link rel="prev" title="Introduction" href="introduction.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> maabara</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#a-short-example">A short example</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ubuntu">Ubuntu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other-operation-systems">Other operation systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-your-installation">Test your installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#basic-setup">Basic setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#basic-error-propagation">Basic error propagation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#abbreviations">Abbreviations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#batch-data">Batch data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#generate-latex-tables">Generate Latex Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#handling-experimental-data">Handling experimental data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Reference Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="uncertainty.html">Uncertainty Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="latex.html">Latex Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data.html">Data Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development.html#license">License</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">maabara</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Installation</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/installation.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>Installation is very easy through <a class="reference external" href="http://www.pip-installer.org/">pip</a>. Maabara depends on <a class="reference external" href="http://pythonhosted.org/uncertainties/">uncertainties</a>, <a class="reference external" href="http://sympy.org/en/index.html">sympy</a> and <a class="reference external" href="http://www.numpy.org/">numpy</a> packages. It is recommend to use it in an <a class="reference external" href="http://ipython.org/notebook.html">IPython notebook</a> environment which enables Latex rendering and helps remarkable in keeping the overview.</p>
+<div class="section" id="ubuntu">
+<h2>Ubuntu<a class="headerlink" href="#ubuntu" title="Permalink to this headline">¶</a></h2>
+<p>See an setup example of Ubuntu 14.04 below.</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo apt-get install python-pip                 # install pip manager
+sudo pip install uncertainties sympy numpy      # install dependencies
+sudo pip install maabara                        # install maabara package
+</pre></div>
+</div>
+<p>To install the optional ipython shell type</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo pip install ipython
+</pre></div>
+</div>
+</div>
+<div class="section" id="other-operation-systems">
+<h2>Other operation systems<a class="headerlink" href="#other-operation-systems" title="Permalink to this headline">¶</a></h2>
+<p>Check <a class="reference external" href="http://www.pip-installer.org/">pip</a>-Website to find setup instructions for your operation system and contribute it to this documentation when suitable.</p>
+</div>
+<div class="section" id="test-your-installation">
+<h2>Test your installation<a class="headerlink" href="#test-your-installation" title="Permalink to this headline">¶</a></h2>
+<p>You may test your installation. Open a terminal and start a new IPython notebook by typing</p>
+<div class="highlight-python"><div class="highlight"><pre>ipython notebook
+</pre></div>
+</div>
+<p>Paste the following to a cell and press [Shift]+[Enter]</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">maabara</span> <span class="kn">as</span> <span class="nn">ma</span>
+<span class="kn">import</span> <span class="nn">uncertainties</span> <span class="kn">as</span> <span class="nn">uc</span>
+<span class="n">ma</span><span class="o">.</span><span class="n">print_ufloat</span><span class="p">(</span><span class="n">uc</span><span class="o">.</span><span class="n">ufloat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="s">&#39;Maabara&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you see uncertainty printing you&#8217;re ready to go ahead.</p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="user_guide.html" class="btn btn-neutral float-right" title="User Guide">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="introduction.html" class="btn btn-neutral" title="Introduction"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    </p>
+  </div>
+
+  <!--<a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>-->
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
