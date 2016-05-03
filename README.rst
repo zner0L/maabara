@@ -1,9 +1,11 @@
 Python package for symbolic propagation of uncertainties with Latex
 binding.
 
--  `Introduction & Documentation`_
--  `Github Project`_
--  `Blog`_
+    THIS PROJECT WAS ARCHIVED. Maabara package is not under active
+    development any more. You can continue using it on your own risk. If
+    you are interested in continuing the development, feel free to use
+    the source code and documentation provided in this repository. For
+    further information please visit http://noc.io
 
 Maabara extends `uncertainties`_ package and allows you to calculate and
 document error propagation in one step. Type your equation once, get the
