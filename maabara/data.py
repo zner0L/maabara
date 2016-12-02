@@ -1,4 +1,4 @@
-from __init__ import *
+from Anpassungen_fuer_Fehler.newmaabara.maabara import *
 
 import numpy as np
 import uncertainties as uc

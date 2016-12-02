@@ -3,6 +3,12 @@ import logging
 import sympy as sy
 import numpy as np
 import uncertainties as uc
+import math
+
+def ceiling(x,n):
+	a = math.ceil(x*10**n)/10**n
+	a = round(a,n)
+	return a
 
 class Sheet(object):
     """
@@ -260,10 +266,13 @@ class Sheet(object):
             for var in self.data:
                 #define symbol
                 exec(var[0] + " = sy.Symbol('" + var[0] + "')")
-
-
+                
+                
+                
                 if len(var) >= 2 and isinstance(var[2], bool) and var[2] == False:
                     no_deviation.append(var[0])
+                elif var[2] == 0:       ## edit, if error = 0, no errorcalculation is done
+                    pass
                 else:
                     # get derivative
                     exec(var[0] + "_der = sy.diff(self.eq_expr,var[0])")
@@ -346,7 +355,9 @@ class Sheet(object):
         self.run()
         
         # outs
+	
         result_tex = '{:.1uL}'.format(self.ufloat)
+	    
         if (self.name != ""):
             result_tex = self.name + "=" + result_tex
 
@@ -545,18 +556,37 @@ class Sheet(object):
                 	dev = self.get_data(field,'dev')
                 
                 tex = self.get_data(field,'tex')
-    	
+		
+		    	
                 self.set_value(field, val, dev, tex)
+	
             
             if (mode == 'ufloat'):
                 result[i] = [self.get_result(mode)]
+		
                 
-            else:
-                nominal, deviation = self.get_result(mode)
-
+            elif(mode == 'sigceil'):
+                nominal, deviation = self.get_result(mode = 'default')
+                (prec ,deviation)= uc.PDG_precision(deviation)
+                fdigit = uc.first_digit(deviation)
+                deviation = ceiling(deviation,prec-1-fdigit)
+                nominal = round(nominal,prec-1-fdigit)
                 result[i][0] = nominal
                 result[i][1] = deviation
-            
+                
+            elif(mode == 'siground'):
+                nominal, deviation = self.get_result(mode = 'default')
+                (prec ,deviation)= uc.PDG_precision(deviation)
+                fdigit = uc.first_digit(deviation)
+                deviation = round(deviation,prec-1-fdigit)
+                nominal = round(nominal,prec-1-fdigit)
+                result[i][0] = nominal
+                result[i][1] = deviation
+                
+            else:
+            	nominal, deviation = self.get_result(mode)
+                result[i][0] = nominal
+                result[i][1] = deviation
             i += 1
         
         if (mode == 'ufloat'):

@@ -10,3 +10,9 @@
 /*.egg-info
 /*.egg
 *~
+
+# IDE Files
+.idea/
+
+# Mac Store Files
+.DS_Store

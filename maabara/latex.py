@@ -1,4 +1,7 @@
-from __init__ import *
+from Anpassungen_fuer_Fehler.newmaabara.maabara import *
+
+import math
+
 
 def is_float(string):
     try:
@@ -39,7 +42,8 @@ class Table(object):
         self.circline = True
         self.embedding = True
         self.placement = '[!htb]'
-        
+        self.mode = 'rule'
+        self.cdot = True
         return True
     
     def set_placement(self, placement = '[!htb]'):
@@ -92,7 +96,19 @@ class Table(object):
         
         """
         self.set('caption',caption)
-            
+    
+    def set_mode(self, mode):
+    	'''
+    	Switch mode between rule and hline
+        ''' 
+        self.set('mode',mode)
+        
+    def set_cdot(self, boolean):
+    	'''
+    	set \cdot instead of \times
+    	'''
+    	self.set('cdot', boolean) 	
+           
     def set(self, option, value):
         setattr(self, option, value)
         
@@ -152,8 +168,8 @@ class Table(object):
         
         args = self._args_from_string(function, default) 
         
-        #if (not args[0] in ['num','lit', 'rnd']):
-            #raise ValueError('Unknown function name: ' + name)
+        if (not args[0] in ['num','lit', 'rnd']):
+            raise ValueError('Unknown function name: ' + name)
         
         return str(args[0]), args[1:]
     
@@ -165,7 +181,7 @@ class Table(object):
         """
         self.add_column(data, function, title);
     
-    def add_column(self, data, function = False, title = ''):
+    def add_column(self, data, function = False, title = '', dataformat = 'sigceil', precision = -1, exp = 'TRUE'):
         """
         
         Add a column to table
@@ -182,12 +198,15 @@ class Table(object):
             
             Available functions:
             
-            ``num(value, deviation, format)`` : Number formating
+            ``num(value, deviation, dataformat, precision)`` : Number formating for Latex-output
                 ``num($0)`` -- Format first column in data as number
                 ``num($0,0.1)`` -- Format numbers with constant uncertainty 0.1
                 ``num($0,$1)`` -- Dynamic uncertainty from second column of data
                 ``num($0,$1,{:L})`` -- Optional format for ufloat printing
-                
+                	``dataformat = 'sigceil' -- will ceil the error and round the value on significant digits; default
+                	``dataformat = 'siground' --will round the error and value on significant digits
+                	    ``precision = int -- can force the a significant digits
+                	    		``precision == -1, default setting, significant digits will be computed
             ``uc(ufloat, format)`` : Number formating alias
                 Like ``num`` function but with ufloat argument
 
@@ -198,7 +217,16 @@ class Table(object):
             ``rnd(value, digits)`` : rounding
                 ``rnd($0,3)`` -- round numbers in 3 digits
             
+            from uncertainty:
             
+            ``ceiling(value, digit)	same as math.round, but rounding to higher bound
+            
+            from uncertainties:
+            
+            uc.PDG_precision(value)
+            uc.first_digit(value)
+            
+            uc.PNG
             Note that ``num`` will be default if no function name was specified: ``$0,$1`` will be interpreted as ``num($0,$1)``
             
         title : string, optional
@@ -223,23 +251,65 @@ class Table(object):
                         
                 return arg
 
-        def num(nominal, deviation = 'False', layout = '{:.1uL}'):
+        def num(nominal, deviation = 'False', dataformat = dataformat, precision = precision, exp = exp):
             result = '\\num{' + str(nominal) + '}'
+            import uncertainties as uc
+            if exp == 'TRUE':
+                exp_str =''
+            else:
+                exp_str ='f'
+            fdigit = uc.first_digit(deviation)
+            if(precision == -1):
+                tmp = uc.PDG_precision(deviation)
+                prec = tmp[0]
+                layout = "{:%sL}" % exp_str                      #Latex-ufloat-format-specifier for prec for %d significant digits
+            
+            else:
+            	prec = precision
+            	
+            	layout = "{:.%du%sL}" % (prec,exp_str)
+            
             if (is_float(deviation)):
-                import uncertainties as uc
-                tmp = uc.ufloat(float(nominal), float(deviation))
-                result = "$" + layout.format(tmp) + "$"
+                if( dataformat == 'sigceil'):
+			        if(fdigit+1-prec < 0 or fdigit+1-prec > 0):			#float output if exponent != 0
+				        nominal = round(nominal, prec-1-fdigit)
+				        deviation = ceiling(deviation, prec-1-fdigit)		                                         
+				        tmp = uc.ufloat(float(nominal), float(deviation))
+				        result = "$" + layout.format(tmp) + "$"
+			        else:										#integer output if exponent == 0
+				        layout = '{:d}'
+				        result = "$" +layout.format(int(nominal)) +' \pm ' + layout.format(int(ceiling(deviation,prec-1-fdigit))) + "$"	
+                elif(dataformat =='siground'):
 
+				
+			        if(fdigit+1-prec < 0 or fdigit+1-prec > 0):			#float output
+				        nominal = round(nominal, prec-1-fdigit)
+				        deviation = round(deviation, prec-1-fdigit)		                                        
+				        tmp = uc.ufloat(float(nominal), float(deviation))
+				        result = "$" + layout.format(tmp) + "$"
+			        else:										#integer output
+				        layout = '{:d}'
+				        result = "$" +layout.format(int(nominal)) +' \pm ' + layout.format(int(round(deviation,prec-1-fdigit))) + "$"
+				
+                elif(dataformat =='noround'):
+			        layout = '{:.5u%sL}' % exp                                        
+			        tmp = uc.ufloat(float(nominal), float(deviation))
+			        result = "$" + layout.format(tmp) + "$"
+                else:
+			        layout = dataformat
+			        tmp = uc.ufloat(float(nominal), float(deviation))
+			        result = "$" + layout.format(tmp) + "$"
+			
             return result.replace('.', ',')
 
         def lit(lit, value, dev = 0):
             from maabara.data import literature_value
             return literature_value(lit, value, dev, "tex!")
         
-        def rnd(value, digits):
+        def rnd(value, digits, layout = '{:.1uL}' ):    #unused
             return num(round(value, digits))
         
-        def uc(value, layout = '{:.1uL}'):
+        def uc(value, layout = '{:.10uL}'):      		#unused
             return num(value.n, value.s, layout)
 
         # transpose to column
@@ -329,28 +399,49 @@ class Table(object):
         """
         
         self.set_data(data)
+        if(self.mode == 'rule'):                        #latex-table mode
+		    result = ""
 
-        result = ""
+		    # header
+		    if self.headline:
+		        result += ' & '.join(self.header) + "\\\\\n\\midrule\n"
 
-        # header
-        if self.headline:
-            result += ' & '.join(self.header) + "\\\\\n\\hline\n"
+		    # process the lines
+		    for row in range(len(self.data)):
+		        
+		        result += ' & '.join(self.data[row])
+		        
+		        result += "\\\\\n"
+		       
+		            
 
-        # process the lines
-        for row in range(len(self.data)):
-            
-            result += ' & '.join(self.data[row])
-            
-            if (row < len(self.data) - 1):
-                result += '\\\\\n\\hline\n'
-            else:
-                result += "\\\\\n"
+		    if (self.embedding):
+		            head, foot = self.environment()	
+		            result = head + result + foot
+        else:
+            result = ""
+
+		    # header
+            if self.headline:
+		        result += ' & '.join(self.header) + "\\\\\n\\hline\n"
+
+		    # process the lines
+            for row in range(len(self.data)):
+		        
+		        result += ' & '.join(self.data[row])
+		        
+		        if (row < len(self.data) - 1):
+		            result += '\\\\\n\\hline\n'
+		        else:
+		            result += "\\\\\n"
 
 
-        if (self.embedding):
+            if (self.embedding):
                 head, foot = self.environment()	
                 result = head + result + foot
 
+		
+			
         return result
     
     def environment(self): 
@@ -364,46 +455,91 @@ class Table(object):
             Latex table environment header and footer
         
         """
-        if self.circline == True:
-            circ = '\n \\hline\n'
+        if(self.mode == 'rule'):
+		    if self.circline == True:
+		        circ = '\n \\toprule\n'
+		    else:
+		        circ = ''
+
+		    # head
+		    head = '\\begin{table}' + self.placement + '\n'
+		
+		    if self.center:
+		        head += '\\centering\n'
+	        
+		    head += '\\begin{tabular}'
+	        
+		    pos = ''
+		    sep = ''
+		
+		    try:
+		        length = len(self.data[0])
+		    except:
+		        length = 0
+		    pos += '{'
+		    for i in range(length):
+		        pos += sep + self.align
+		        sep = ''
+		    pos += '}'    
+		    if pos != '':
+		        head += pos
+		        
+		    head += circ
+	        
+		    # foot
+		    foot = '\\bottomrule\n' + '\\end{tabular}\n'
+		
+		    if (self.caption != ''):
+		        foot += '\\caption{' + self.caption + '}'
+		
+		    if (self.label != ''):
+		        foot += '\\label{' + self.label + '}'
+
+		    foot += '\\end{table}'
+
+		    return head, foot
         else:
-            circ = ''
+		
+		    if self.circline == True:
+		        circ = '\n \\hline\n'
+		    else:
+		        circ = ''
 
-        # head
-        head = '\\begin{table}' + self.placement + '\n'
-        
-        if self.center:
-            head += '\\centering\n'
-    
-        head += '\\begin{tabular}'
-    
-        pos = ''
-        sep = ''
-        
-        try:
-            length = len(self.data[0])
-        except:
-            length = 0
-        
-        for i in range(length):
-            pos += sep + self.align
-            sep = '|'
-            
-        if pos != '':
-            head += '{|' + pos + '|}'
-            
-        head += circ
-    
-        # foot
-        foot = circ + '\\end{tabular}\n'
-        
-        if (self.caption != ''):
-            foot += '\\caption{' + self.caption + '}'
-        
-        if (self.label != ''):
-            foot += '\\label{' + self.label + '}'
+		    # head
+		    head = '\\begin{table}' + self.placement + '\n'
+		
+		    if self.center:
+		        head += '\\centering\n'
+	        
+		    head += '\\begin{tabular}'
+	        
+		    pos = ''
+		    sep = ''
+		
+		    try:
+		        length = len(self.data[0])
+		    except:
+		        length = 0
+		
+		    for i in range(length):
+		        pos += sep + self.align
+		        sep = '|'
+		        
+		    if pos != '':
+		        head += '{|' + pos + '|}'
+		        
+		    head += circ
+	        
+		    # foot
+		    foot = circ + '\\end{tabular}\n'
+		
+		    if (self.caption != ''):
+		        foot += '\\caption{' + self.caption + '}'
+		
+		    if (self.label != ''):
+		        foot += '\\label{' + self.label + '}'
 
-        foot += '\\end{table}'
+		    foot += '\\end{table}'
 
         return head, foot
 
