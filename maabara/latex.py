@@ -1,4 +1,4 @@
-from Anpassungen_fuer_Fehler.newmaabara.maabara import *
+from maabara import *
 
 import math
 
@@ -253,7 +253,7 @@ class Table(object):
 
         def num(nominal, deviation = 'False', dataformat = dataformat, precision = precision, exp = exp):
             result = '\\num{' + str(nominal) + '}'
-            import uncertainties as uc
+            import uncertainties.core as uc
             if exp == 'TRUE':
                 exp_str =''
             else:
